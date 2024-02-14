@@ -6,6 +6,7 @@ if [ "$system_type" = "Linux" ]; then
     if ! command -v rustup >/dev/null 2>&1; then
         echo "Installing rustup"
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+        source "$HOME/.cargo/env"
     fi
 
     if ! command -v fish >/dev/null 2>&1; then
