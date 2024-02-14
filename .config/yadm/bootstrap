@@ -1,0 +1,96 @@
+#!/bin/sh
+
+system_type=$(uname -s)
+
+if [ "$system_type" = "Linux" ]; then
+    if ! command -v rustup >/dev/null 2>&1; then
+        echo "Installing rustup"
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    fi
+
+    if ! command -v fish >/dev/null 2>&1; then
+        echo "Installing fish"
+        if [[ `uname -a` =~ "ubuntu" ]]; then
+            apt install fish
+        else
+            pacman -S fish
+        fi
+    fi
+
+    if ! command -v starship >/dev/null 2>&1; then
+        echo "Installing starship"
+        curl -sS https://starship.rs/install.sh | sh
+    fi
+
+    if ! command -v bat >/dev/null 2>&1; then
+        echo "Installing bat"
+        cargo install bat
+    fi
+
+    if ! command -v fd >/dev/null 2>&1; then
+        echo "Installing fd"
+        cargo install fd-find
+    fi
+
+    if ! command -v exa >/dev/null 2>&1; then
+        echo "Installing exa"
+        cargo install exa
+    fi
+
+    if ! command -v xcp >/dev/null 2>&1; then
+        echo "Installing xcp"
+        cargo install xcp
+    fi
+
+    if ! command -v rg >/dev/null 2>&1; then
+        echo "Installing bat"
+        cargo install ripgrep
+    fi
+
+    if ! command -v zoxide >/dev/null 2>&1; then
+        echo "Installing zoxide"
+        cargo install zoxide
+    fi
+
+    if ! command -v dust >/dev/null 2>&1; then
+        echo "Installing dust"
+        cargo install dust
+    fi
+
+    if ! command -v nvim >/dev/null 2>&1; then
+        echo "Installing nvim"
+        curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+        sudo tar -xzf nvim-linux64.tar.gz
+        cp nvim-linux64/bin/* /usr/local/bin
+        rm -rf nvim-linux64
+    fi
+
+    if ! command -v ranger >/dev/null 2>&1; then
+        echo "Installing ranger"
+        if [[ `uname -a` =~ "ubuntu" ]]; then
+            apt install ranger
+        else
+            pacman -S ranger
+        fi
+    fi
+
+    if ! command -v lazygit >/dev/null 2>&1; then
+        echo "Installing lazygit"
+        if [[ `uname -a` =~ "ubuntu" ]]; then
+            apt install lazygit
+        else
+            pacman -S lazygit
+        fi
+    fi
+fi
+
+configure_fish() {
+    source $HOME/.config/fish/config.fish
+}
+
+configure_vim() {
+    nvim +'PackerInstall' +qa
+}
+
+configure_fish
+configure_vim
