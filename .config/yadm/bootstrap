@@ -55,7 +55,7 @@ if [ "$system_type" = "Linux" ]; then
 
     if ! command -v dust >/dev/null 2>&1; then
         echo "Installing dust"
-        cargo install dust
+        cargo install du-dust
     fi
 
     if ! command -v nvim >/dev/null 2>&1; then
@@ -86,7 +86,7 @@ if [ "$system_type" = "Linux" ]; then
 fi
 
 configure_fish() {
-    source $HOME/.config/fish/config.fish
+    chsh -s /usr/bin/fish
 }
 
 configure_vim() {
