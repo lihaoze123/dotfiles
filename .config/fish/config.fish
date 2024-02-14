@@ -1,7 +1,14 @@
 set -gx PATH "$HOME/.cargo/bin" $PATH
 set -gx EDITOR nvim
 
-function proxy
+function proxy 
+    set -xg PEOXY_HTTP "http://127.0.0.1:7890"
+	set -xg ALL_PROXY $PROXY_HTTP
+	set -xg HTTPS_PROXY $PROXY_HTTP
+	set -xg HTTP_PROXY $PROXY_HTTP
+end
+
+function wsl_proxy
 	set -xg hostip $(cat /etc/resolv.conf | grep nameserver | awk '{ print $2 }')
 	set -xg wslip $(hostname -I | awk '{print $1}')
 	set -xg port 7890
@@ -26,3 +33,4 @@ alias du="dust"
 alias vim="nvim"
 alias ra="ranger"
 alias lg="lazygit"
+alias x="extract"
