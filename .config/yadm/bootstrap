@@ -83,6 +83,15 @@ if [ "$system_type" = "Linux" ]; then
             pacman -S lazygit
         fi
     fi
+
+    if ! command -v nodejs >/dev/null 2>&1; then
+        echo "Installing nodejs"
+        if [[ `uname -a` =~ "ubuntu" ]]; then
+            apt install nodejs
+        else
+            pacman -S nodejs
+        fi
+    fi
 fi
 
 configure_fish() {
@@ -91,6 +100,20 @@ configure_fish() {
 
 configure_vim() {
     nvim +'PackerInstall' +qa
+    nvim +'CocInstall coc-clangd'
+
+    cd $HOME/.local/share/nvim/site/pack/packer/start/coc.nvim
+
+    npm ci
+
+    if ! command -v clangd >/dev/null 2>&1; then
+        echo "Installing clangd"
+        if [[ `uname -a` =~ "ubuntu" ]]; then
+            apt install clangd
+        else
+            pacman -S clangd
+        fi
+    fi
 }
 
 configure_fish
