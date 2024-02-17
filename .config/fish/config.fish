@@ -16,7 +16,7 @@ yadm pull -q
 
 alias cat="bat"
 alias find="fd"
-alias ls='exa --git --icons --color=always --group-directories-first'
+alias ls='eza --git --icons --color=always --group-directories-first'
 alias la='ls -la'
 alias cp="xcp"
 alias grep="rg"
