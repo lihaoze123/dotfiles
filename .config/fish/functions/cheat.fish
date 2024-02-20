@@ -1,3 +1,3 @@
 function cheat
-    curl cheat.sh/$argv | bat
+    curl --no-progress-meter cheat.sh/$argv | bat
 end
