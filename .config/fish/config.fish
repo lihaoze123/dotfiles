@@ -6,17 +6,16 @@ export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 gpgconf --launch gpg-agent
 
 function proxy 
-    set -xg PEOXY_HTTP "http://127.0.0.1:7890"
-	set -xg ALL_PROXY $PROXY_HTTP
-	set -xg HTTPS_PROXY $PROXY_HTTP
-	set -xg HTTP_PROXY $PROXY_HTTP
+    set -gx PROXY_HTTP "http://127.0.0.1:7890"
+	set -gx ALL_PROXY $PROXY_HTTP
+	set -gx HTTPS_PROXY $PROXY_HTTP
+	set -gx HTTP_PROXY $PROXY_HTTP
 end
 
 starship init fish | source
 zoxide init fish | source
 set fish_greeting
 
-yadm pull -q
 set_bing_wallpaper
 
 alias cat="bat"
