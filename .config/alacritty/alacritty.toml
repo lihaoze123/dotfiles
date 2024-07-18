@@ -1,0 +1,11 @@
+import = ["~/.config/alacritty/dracula.toml"]
+
+shell = "/usr/bin/fish"
+live_config_reload = true
+
+[font]
+size = 16
+normal = { family = "fira code nerd font", style = "Regular" }
+
+[window]
+opacity = 0.8
