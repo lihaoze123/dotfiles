@@ -4,5 +4,6 @@
             "path": "rust-analyzer",
         }
     },
-    "snippets.ultisnips.pythonPrompt": false
+    "snippets.ultisnips.pythonPrompt": false,
+    "clangd.arguments": ["--header-insertion=never"]
 }
