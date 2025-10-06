@@ -1,9 +1,0 @@
-{
-    "rust-analyzer": {
-        "server": {
-            "path": "rust-analyzer",
-        }
-    },
-    "snippets.ultisnips.pythonPrompt": false,
-    "clangd.arguments": ["--header-insertion=never"]
-}

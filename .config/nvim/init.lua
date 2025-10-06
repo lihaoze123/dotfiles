@@ -1,13 +1,2 @@
-require("plugins.plugins-setup")
-require("plugins.coc")
-require("plugins.lualine")
-require("plugins.nvim-tree")
-require("plugins.treesitter")
-require("plugins.comment")
-require("plugins.gitsigns")
-require("plugins.leap")
-require("plugins.indent-blankline")
-require("plugins.competitest")
-
-require("core.options")
-require("core.keymaps")
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
